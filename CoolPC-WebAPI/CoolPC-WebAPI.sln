@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolPC-WebAPI", "CoolPC-WebAPI\CoolPC-WebAPI.csproj", "{F414A56A-A06C-4234-A162-3C43CF9E3E23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTest", "XUnitTest\XUnitTest.csproj", "{227704BD-B5F7-4D83-A8DB-A9CDF9222190}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F414A56A-A06C-4234-A162-3C43CF9E3E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F414A56A-A06C-4234-A162-3C43CF9E3E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F414A56A-A06C-4234-A162-3C43CF9E3E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{227704BD-B5F7-4D83-A8DB-A9CDF9222190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227704BD-B5F7-4D83-A8DB-A9CDF9222190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227704BD-B5F7-4D83-A8DB-A9CDF9222190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227704BD-B5F7-4D83-A8DB-A9CDF9222190}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
