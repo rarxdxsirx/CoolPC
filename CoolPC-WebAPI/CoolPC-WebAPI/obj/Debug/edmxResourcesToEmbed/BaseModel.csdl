@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CoolPCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Components">
+    <Key>
+      <PropertyRef Name="component_id" />
+    </Key>
+    <Property Name="component_id" Type="Int64" Nullable="false" />
+    <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type_id" Type="Int64" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="device_id" Type="Int64" Nullable="false" />
+    <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="discount_id" Type="Int64" />
+    <NavigationProperty Name="Components_Types" Relationship="Self.FK_Component_Components_Types" FromRole="Components" ToRole="Components_Types" />
+    <NavigationProperty Name="CPU_Coolings" Relationship="Self.FK_Component_CPU_Coolings" FromRole="Components" ToRole="CPU_Coolings" />
+    <NavigationProperty Name="CPUs" Relationship="Self.FK_Component_CPUs" FromRole="Components" ToRole="CPUs" />
+    <NavigationProperty Name="Discounts" Relationship="Self.FK_Component_Discounts" FromRole="Components" ToRole="Discounts" />
+    <NavigationProperty Name="GPUs" Relationship="Self.FK_Component_GPUs" FromRole="Components" ToRole="GPUs" />
+    <NavigationProperty Name="HDDs" Relationship="Self.FK_Component_HDDs" FromRole="Components" ToRole="HDDs" />
+    <NavigationProperty Name="Keyboards" Relationship="Self.FK_Component_Keyboards" FromRole="Components" ToRole="Keyboards" />
+    <NavigationProperty Name="Motherboards" Relationship="Self.FK_Component_Motherboards" FromRole="Components" ToRole="Motherboards" />
+    <NavigationProperty Name="Mouses" Relationship="Self.FK_Component_Mouses" FromRole="Components" ToRole="Mouses" />
+    <NavigationProperty Name="Power_Supplies" Relationship="Self.FK_Component_Power_Supplies" FromRole="Components" ToRole="Power_Supplies" />
+    <NavigationProperty Name="RAMs" Relationship="Self.FK_Component_RAMs" FromRole="Components" ToRole="RAMs" />
+    <NavigationProperty Name="SSDs" Relationship="Self.FK_Component_SSDs" FromRole="Components" ToRole="SSDs" />
+    <NavigationProperty Name="Configurations" Relationship="Self.Components_Of_Configuration" FromRole="Components" ToRole="Configurations" />
+  </EntityType>
+  <EntityType Name="Components_Types">
+    <Key>
+      <PropertyRef Name="component_type_id" />
+    </Key>
+    <Property Name="component_type_id" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_Components_Types" FromRole="Components_Types" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="Configurations">
+    <Key>
+      <PropertyRef Name="configuration_id" />
+    </Key>
+    <Property Name="configuration_id" Type="Int64" Nullable="false" />
+    <Property Name="custom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Configuration_In_Orders" Relationship="Self.FK_Configuration_In_Orders_Configurations" FromRole="Configurations" ToRole="Configuration_In_Orders" />
+    <NavigationProperty Name="Components" Relationship="Self.Components_Of_Configuration" FromRole="Configurations" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="CPU_Coolings">
+    <Key>
+      <PropertyRef Name="cpu_cooling_id" />
+    </Key>
+    <Property Name="cpu_cooling_id" Type="Int64" Nullable="false" />
+    <Property Name="min_speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="max_speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_CPU_Coolings" FromRole="CPU_Coolings" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="CPUs">
+    <Key>
+      <PropertyRef Name="cpu_id" />
+    </Key>
+    <Property Name="cpu_id" Type="Int64" Nullable="false" />
+    <Property Name="socket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="number_of_cores" Type="Int64" Nullable="false" />
+    <Property Name="frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="threads" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_CPUs" FromRole="CPUs" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="second_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Deliveries_Details">
+    <Key>
+      <PropertyRef Name="delivery_details_id" />
+    </Key>
+    <Property Name="delivery_details_id" Type="Int64" Nullable="false" />
+    <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="postal_code" Type="Int32" Nullable="false" />
+    <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="building" Type="Int32" Nullable="false" />
+    <Property Name="apartament" Type="Int32" Nullable="false" />
+    <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Deliveries_Details" FromRole="Deliveries_Details" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Discounts">
+    <Key>
+      <PropertyRef Name="discount_id" />
+    </Key>
+    <Property Name="discount_id" Type="Int64" Nullable="false" />
+    <Property Name="discount_amount" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_Discounts" FromRole="Discounts" ToRole="Components" />
+    <NavigationProperty Name="Payments_Details" Relationship="Self.FK_Payments_Details_Discounts" FromRole="Discounts" ToRole="Payments_Details" />
+  </EntityType>
+  <EntityType Name="GPUs">
+    <Key>
+      <PropertyRef Name="gpu_id" />
+    </Key>
+    <Property Name="gpu_id" Type="Int64" Nullable="false" />
+    <Property Name="frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="memory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="memory_frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="power_consuption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_GPUs" FromRole="GPUs" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="HDDs">
+    <Key>
+      <PropertyRef Name="hdd_id" />
+    </Key>
+    <Property Name="hdd_id" Type="Int64" Nullable="false" />
+    <Property Name="capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="spindle_speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="latency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="data_speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_HDDs" FromRole="HDDs" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="Keyboards">
+    <Key>
+      <PropertyRef Name="keyboard_id" />
+    </Key>
+    <Property Name="keyboard_id" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="format" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="number_of_buttons" Type="Int32" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_Keyboards" FromRole="Keyboards" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="Motherboards">
+    <Key>
+      <PropertyRef Name="motherbroad_id" />
+    </Key>
+    <Property Name="motherbroad_id" Type="Int64" Nullable="false" />
+    <Property Name="form_factor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="socket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="memory_slots" Type="Int32" Nullable="false" />
+    <Property Name="memory_frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pci_slots" Type="Int32" Nullable="false" />
+    <Property Name="sata_slots" Type="Int32" Nullable="false" />
+    <Property Name="pins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_Motherboards" FromRole="Motherboards" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="Mouses">
+    <Key>
+      <PropertyRef Name="mouse_id" />
+    </Key>
+    <Property Name="mouse_id" Type="Int64" Nullable="false" />
+    <Property Name="dpi" Type="Int32" Nullable="false" />
+    <Property Name="number_of_buttons" Type="Int32" Nullable="false" />
+    <Property Name="frequency" Type="Int32" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_Mouses" FromRole="Mouses" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int64" Nullable="false" />
+    <Property Name="delivery_details_id" Type="Int64" Nullable="false" />
+    <Property Name="payment_details_id" Type="Int64" Nullable="false" />
+    <Property Name="order_status_id" Type="Int64" Nullable="false" />
+    <Property Name="customer_id" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
+    <NavigationProperty Name="Deliveries_Details" Relationship="Self.FK_Orders_Deliveries_Details" FromRole="Orders" ToRole="Deliveries_Details" />
+    <NavigationProperty Name="Configuration_In_Orders" Relationship="Self.FK_Configuration_In_Orders_Orders" FromRole="Orders" ToRole="Configuration_In_Orders" />
+    <NavigationProperty Name="Orders_Status" Relationship="Self.FK_Orders_Orders_Status" FromRole="Orders" ToRole="Orders_Status" />
+    <NavigationProperty Name="Payments_Details" Relationship="Self.FK_Orders_Payments_Details" FromRole="Orders" ToRole="Payments_Details" />
+  </EntityType>
+  <EntityType Name="Orders_Status">
+    <Key>
+      <PropertyRef Name="order_status_id" />
+    </Key>
+    <Property Name="order_status_id" Type="Int64" Nullable="false" />
+    <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="payment_mark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="shipment_mark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Orders_Status" FromRole="Orders_Status" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Payments_Details">
+    <Key>
+      <PropertyRef Name="payment_details_id" />
+    </Key>
+    <Property Name="payment_details_id" Type="Int64" Nullable="false" />
+    <Property Name="method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="discount_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Discounts" Relationship="Self.FK_Payments_Details_Discounts" FromRole="Payments_Details" ToRole="Discounts" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Payments_Details" FromRole="Payments_Details" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Power_Supplies">
+    <Key>
+      <PropertyRef Name="power_supply_id" />
+    </Key>
+    <Property Name="power_supply_id" Type="Int64" Nullable="false" />
+    <Property Name="power" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cable_length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_Power_Supplies" FromRole="Power_Supplies" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="RAMs">
+    <Key>
+      <PropertyRef Name="ram_id" />
+    </Key>
+    <Property Name="ram_id" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="count" Type="Int32" Nullable="false" />
+    <Property Name="memory_volume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_RAMs" FromRole="RAMs" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="SSDs">
+    <Key>
+      <PropertyRef Name="ssd_id" />
+    </Key>
+    <Property Name="ssd_id" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="max_read_speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="max_write_speed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="device_type_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Component_SSDs" FromRole="SSDs" ToRole="Components" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Configuration_In_Orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="configuration_id" Type="Int64" />
+    <Property Name="order_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Configurations" Relationship="Self.FK_Configuration_In_Orders_Configurations" FromRole="Configuration_In_Orders" ToRole="Configurations" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Configuration_In_Orders_Orders" FromRole="Configuration_In_Orders" ToRole="Orders" />
+  </EntityType>
+  <Association Name="FK_Component_Components_Types">
+    <End Role="Components_Types" Type="Self.Components_Types" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Components_Types">
+        <PropertyRef Name="component_type_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_CPU_Coolings">
+    <End Role="CPU_Coolings" Type="Self.CPU_Coolings" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CPU_Coolings">
+        <PropertyRef Name="cpu_cooling_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_CPUs">
+    <End Role="CPUs" Type="Self.CPUs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CPUs">
+        <PropertyRef Name="cpu_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Discounts">
+    <End Role="Discounts" Type="Self.Discounts" Multiplicity="0..1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discounts">
+        <PropertyRef Name="discount_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="discount_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_GPUs">
+    <End Role="GPUs" Type="Self.GPUs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPUs">
+        <PropertyRef Name="gpu_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_HDDs">
+    <End Role="HDDs" Type="Self.HDDs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HDDs">
+        <PropertyRef Name="hdd_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Keyboards">
+    <End Role="Keyboards" Type="Self.Keyboards" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Keyboards">
+        <PropertyRef Name="keyboard_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Motherboards">
+    <End Role="Motherboards" Type="Self.Motherboards" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Motherboards">
+        <PropertyRef Name="motherbroad_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Mouses">
+    <End Role="Mouses" Type="Self.Mouses" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mouses">
+        <PropertyRef Name="mouse_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Power_Supplies">
+    <End Role="Power_Supplies" Type="Self.Power_Supplies" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Power_Supplies">
+        <PropertyRef Name="power_supply_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_RAMs">
+    <End Role="RAMs" Type="Self.RAMs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RAMs">
+        <PropertyRef Name="ram_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_SSDs">
+    <End Role="SSDs" Type="Self.SSDs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SSDs">
+        <PropertyRef Name="ssd_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuration_In_Orders_Configurations">
+    <End Role="Configurations" Type="Self.Configurations" Multiplicity="1" />
+    <End Role="Configuration_In_Orders" Type="Self.Configuration_In_Orders" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Configurations">
+        <PropertyRef Name="configuration_id" />
+      </Principal>
+      <Dependent Role="Configuration_In_Orders">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Deliveries_Details">
+    <End Role="Deliveries_Details" Type="Self.Deliveries_Details" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deliveries_Details">
+        <PropertyRef Name="delivery_details_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="delivery_details_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_Details_Discounts">
+    <End Role="Discounts" Type="Self.Discounts" Multiplicity="1" />
+    <End Role="Payments_Details" Type="Self.Payments_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discounts">
+        <PropertyRef Name="discount_id" />
+      </Principal>
+      <Dependent Role="Payments_Details">
+        <PropertyRef Name="discount_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuration_In_Orders_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="Configuration_In_Orders" Type="Self.Configuration_In_Orders" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="Configuration_In_Orders">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Orders_Status">
+    <End Role="Orders_Status" Type="Self.Orders_Status" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders_Status">
+        <PropertyRef Name="order_status_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="delivery_details_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Payments_Details">
+    <End Role="Payments_Details" Type="Self.Payments_Details" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payments_Details">
+        <PropertyRef Name="payment_details_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="payment_details_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Components_Of_Configuration">
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <End Role="Configurations" Type="Self.Configurations" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="CoolPCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Components" EntityType="Self.Components" />
+    <EntitySet Name="Components_Types" EntityType="Self.Components_Types" />
+    <EntitySet Name="Configurations" EntityType="Self.Configurations" />
+    <EntitySet Name="CPU_Coolings" EntityType="Self.CPU_Coolings" />
+    <EntitySet Name="CPUs" EntityType="Self.CPUs" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" />
+    <EntitySet Name="Deliveries_Details" EntityType="Self.Deliveries_Details" />
+    <EntitySet Name="Discounts" EntityType="Self.Discounts" />
+    <EntitySet Name="GPUs" EntityType="Self.GPUs" />
+    <EntitySet Name="HDDs" EntityType="Self.HDDs" />
+    <EntitySet Name="Keyboards" EntityType="Self.Keyboards" />
+    <EntitySet Name="Motherboards" EntityType="Self.Motherboards" />
+    <EntitySet Name="Mouses" EntityType="Self.Mouses" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="Orders_Status" EntityType="Self.Orders_Status" />
+    <EntitySet Name="Payments_Details" EntityType="Self.Payments_Details" />
+    <EntitySet Name="Power_Supplies" EntityType="Self.Power_Supplies" />
+    <EntitySet Name="RAMs" EntityType="Self.RAMs" />
+    <EntitySet Name="SSDs" EntityType="Self.SSDs" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Configuration_In_Orders" EntityType="Self.Configuration_In_Orders" />
+    <AssociationSet Name="FK_Component_Components_Types" Association="Self.FK_Component_Components_Types">
+      <End Role="Components_Types" EntitySet="Components_Types" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_CPU_Coolings" Association="Self.FK_Component_CPU_Coolings">
+      <End Role="CPU_Coolings" EntitySet="CPU_Coolings" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_CPUs" Association="Self.FK_Component_CPUs">
+      <End Role="CPUs" EntitySet="CPUs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Discounts" Association="Self.FK_Component_Discounts">
+      <End Role="Discounts" EntitySet="Discounts" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_GPUs" Association="Self.FK_Component_GPUs">
+      <End Role="GPUs" EntitySet="GPUs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_HDDs" Association="Self.FK_Component_HDDs">
+      <End Role="HDDs" EntitySet="HDDs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Keyboards" Association="Self.FK_Component_Keyboards">
+      <End Role="Keyboards" EntitySet="Keyboards" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Motherboards" Association="Self.FK_Component_Motherboards">
+      <End Role="Motherboards" EntitySet="Motherboards" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Mouses" Association="Self.FK_Component_Mouses">
+      <End Role="Mouses" EntitySet="Mouses" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Power_Supplies" Association="Self.FK_Component_Power_Supplies">
+      <End Role="Power_Supplies" EntitySet="Power_Supplies" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_RAMs" Association="Self.FK_Component_RAMs">
+      <End Role="RAMs" EntitySet="RAMs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_SSDs" Association="Self.FK_Component_SSDs">
+      <End Role="SSDs" EntitySet="SSDs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuration_In_Orders_Configurations" Association="Self.FK_Configuration_In_Orders_Configurations">
+      <End Role="Configurations" EntitySet="Configurations" />
+      <End Role="Configuration_In_Orders" EntitySet="Configuration_In_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Deliveries_Details" Association="Self.FK_Orders_Deliveries_Details">
+      <End Role="Deliveries_Details" EntitySet="Deliveries_Details" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_Details_Discounts" Association="Self.FK_Payments_Details_Discounts">
+      <End Role="Discounts" EntitySet="Discounts" />
+      <End Role="Payments_Details" EntitySet="Payments_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuration_In_Orders_Orders" Association="Self.FK_Configuration_In_Orders_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Configuration_In_Orders" EntitySet="Configuration_In_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Orders_Status" Association="Self.FK_Orders_Orders_Status">
+      <End Role="Orders_Status" EntitySet="Orders_Status" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Payments_Details" Association="Self.FK_Orders_Payments_Details">
+      <End Role="Payments_Details" EntitySet="Payments_Details" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="Components_Of_Configuration" Association="Self.Components_Of_Configuration">
+      <End Role="Components" EntitySet="Components" />
+      <End Role="Configurations" EntitySet="Configurations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

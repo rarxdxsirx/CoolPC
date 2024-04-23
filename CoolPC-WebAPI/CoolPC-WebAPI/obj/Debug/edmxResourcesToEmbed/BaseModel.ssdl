@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище CoolPCModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Components">
+    <Key>
+      <PropertyRef Name="component_id" />
+    </Key>
+    <Property Name="component_id" Type="bigint" Nullable="false" />
+    <Property Name="model" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type_id" Type="bigint" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="device_id" Type="bigint" Nullable="false" />
+    <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="discount_id" Type="bigint" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CoolPC.dbo.Components_Of_Configuration" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Components_Of_Configuration">
+    <Key>
+      <PropertyRef Name="configuration_id" />
+      <PropertyRef Name="component_id" />
+    </Key>
+    <Property Name="configuration_id" Type="bigint" Nullable="false" />
+    <Property Name="component_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Components_Types">
+    <Key>
+      <PropertyRef Name="component_type_id" />
+    </Key>
+    <Property Name="component_type_id" Type="bigint" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CoolPC.dbo.Configuration_In_Orders" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Configuration_In_Orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="configuration_id" Type="bigint" />
+    <Property Name="order_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Configurations">
+    <Key>
+      <PropertyRef Name="configuration_id" />
+    </Key>
+    <Property Name="configuration_id" Type="bigint" Nullable="false" />
+    <Property Name="custom" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CPU_Coolings">
+    <Key>
+      <PropertyRef Name="cpu_cooling_id" />
+    </Key>
+    <Property Name="cpu_cooling_id" Type="bigint" Nullable="false" />
+    <Property Name="min_speed" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="max_speed" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CPUs">
+    <Key>
+      <PropertyRef Name="cpu_id" />
+    </Key>
+    <Property Name="cpu_id" Type="bigint" Nullable="false" />
+    <Property Name="socket" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="number_of_cores" Type="bigint" Nullable="false" />
+    <Property Name="frequency" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="threads" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="second_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Deliveries_Details">
+    <Key>
+      <PropertyRef Name="delivery_details_id" />
+    </Key>
+    <Property Name="delivery_details_id" Type="bigint" Nullable="false" />
+    <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="postal_code" Type="int" Nullable="false" />
+    <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="building" Type="int" Nullable="false" />
+    <Property Name="apartament" Type="int" Nullable="false" />
+    <Property Name="region" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Discounts">
+    <Key>
+      <PropertyRef Name="discount_id" />
+    </Key>
+    <Property Name="discount_id" Type="bigint" Nullable="false" />
+    <Property Name="discount_amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GPUs">
+    <Key>
+      <PropertyRef Name="gpu_id" />
+    </Key>
+    <Property Name="gpu_id" Type="bigint" Nullable="false" />
+    <Property Name="frequency" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="memory" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="memory_frequency" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="power_consuption" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HDDs">
+    <Key>
+      <PropertyRef Name="hdd_id" />
+    </Key>
+    <Property Name="hdd_id" Type="bigint" Nullable="false" />
+    <Property Name="capacity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="spindle_speed" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="latency" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="data_speed" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Keyboards">
+    <Key>
+      <PropertyRef Name="keyboard_id" />
+    </Key>
+    <Property Name="keyboard_id" Type="bigint" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="format" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="number_of_buttons" Type="int" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Motherboards">
+    <Key>
+      <PropertyRef Name="motherbroad_id" />
+    </Key>
+    <Property Name="motherbroad_id" Type="bigint" Nullable="false" />
+    <Property Name="form_factor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="socket" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="memory_slots" Type="int" Nullable="false" />
+    <Property Name="memory_frequency" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="pci_slots" Type="int" Nullable="false" />
+    <Property Name="sata_slots" Type="int" Nullable="false" />
+    <Property Name="pins" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mouses">
+    <Key>
+      <PropertyRef Name="mouse_id" />
+    </Key>
+    <Property Name="mouse_id" Type="bigint" Nullable="false" />
+    <Property Name="dpi" Type="int" Nullable="false" />
+    <Property Name="number_of_buttons" Type="int" Nullable="false" />
+    <Property Name="frequency" Type="int" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="bigint" Nullable="false" />
+    <Property Name="delivery_details_id" Type="bigint" Nullable="false" />
+    <Property Name="payment_details_id" Type="bigint" Nullable="false" />
+    <Property Name="order_status_id" Type="bigint" Nullable="false" />
+    <Property Name="customer_id" Type="bigint" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders_Status">
+    <Key>
+      <PropertyRef Name="order_status_id" />
+    </Key>
+    <Property Name="order_status_id" Type="bigint" Nullable="false" />
+    <Property Name="order_date" Type="date" Nullable="false" />
+    <Property Name="payment_mark" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="shipment_mark" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payments_Details">
+    <Key>
+      <PropertyRef Name="payment_details_id" />
+    </Key>
+    <Property Name="payment_details_id" Type="bigint" Nullable="false" />
+    <Property Name="method" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="discount_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Power_Supplies">
+    <Key>
+      <PropertyRef Name="power_supply_id" />
+    </Key>
+    <Property Name="power_supply_id" Type="bigint" Nullable="false" />
+    <Property Name="power" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cable_length" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="pins" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RAMs">
+    <Key>
+      <PropertyRef Name="ram_id" />
+    </Key>
+    <Property Name="ram_id" Type="bigint" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="count" Type="int" Nullable="false" />
+    <Property Name="memory_volume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="frequency" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SSDs">
+    <Key>
+      <PropertyRef Name="ssd_id" />
+    </Key>
+    <Property Name="ssd_id" Type="bigint" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="capacity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="max_read_speed" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="max_write_speed" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device_type_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Component_Components_Types">
+    <End Role="Components_Types" Type="Self.Components_Types" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Components_Types">
+        <PropertyRef Name="component_type_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_CPU_Coolings">
+    <End Role="CPU_Coolings" Type="Self.CPU_Coolings" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CPU_Coolings">
+        <PropertyRef Name="cpu_cooling_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_CPUs">
+    <End Role="CPUs" Type="Self.CPUs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CPUs">
+        <PropertyRef Name="cpu_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Discounts">
+    <End Role="Discounts" Type="Self.Discounts" Multiplicity="0..1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discounts">
+        <PropertyRef Name="discount_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="discount_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_GPUs">
+    <End Role="GPUs" Type="Self.GPUs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPUs">
+        <PropertyRef Name="gpu_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_HDDs">
+    <End Role="HDDs" Type="Self.HDDs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HDDs">
+        <PropertyRef Name="hdd_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Keyboards">
+    <End Role="Keyboards" Type="Self.Keyboards" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Keyboards">
+        <PropertyRef Name="keyboard_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Motherboards">
+    <End Role="Motherboards" Type="Self.Motherboards" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Motherboards">
+        <PropertyRef Name="motherbroad_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Mouses">
+    <End Role="Mouses" Type="Self.Mouses" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mouses">
+        <PropertyRef Name="mouse_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_Power_Supplies">
+    <End Role="Power_Supplies" Type="Self.Power_Supplies" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Power_Supplies">
+        <PropertyRef Name="power_supply_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_RAMs">
+    <End Role="RAMs" Type="Self.RAMs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RAMs">
+        <PropertyRef Name="ram_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_SSDs">
+    <End Role="SSDs" Type="Self.SSDs" Multiplicity="1" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SSDs">
+        <PropertyRef Name="ssd_id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Components_Of_Configuration_Component">
+    <End Role="Components" Type="Self.Components" Multiplicity="1" />
+    <End Role="Components_Of_Configuration" Type="Self.Components_Of_Configuration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Components">
+        <PropertyRef Name="component_id" />
+      </Principal>
+      <Dependent Role="Components_Of_Configuration">
+        <PropertyRef Name="component_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Components_Of_Configuration_Configurations">
+    <End Role="Configurations" Type="Self.Configurations" Multiplicity="1" />
+    <End Role="Components_Of_Configuration" Type="Self.Components_Of_Configuration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Configurations">
+        <PropertyRef Name="configuration_id" />
+      </Principal>
+      <Dependent Role="Components_Of_Configuration">
+        <PropertyRef Name="configuration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuration_In_Orders_Configurations">
+    <End Role="Configurations" Type="Self.Configurations" Multiplicity="1" />
+    <End Role="Configuration_In_Orders" Type="Self.Configuration_In_Orders" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Configurations">
+        <PropertyRef Name="configuration_id" />
+      </Principal>
+      <Dependent Role="Configuration_In_Orders">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuration_In_Orders_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="Configuration_In_Orders" Type="Self.Configuration_In_Orders" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="Configuration_In_Orders">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Deliveries_Details">
+    <End Role="Deliveries_Details" Type="Self.Deliveries_Details" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deliveries_Details">
+        <PropertyRef Name="delivery_details_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="delivery_details_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Orders_Status">
+    <End Role="Orders_Status" Type="Self.Orders_Status" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders_Status">
+        <PropertyRef Name="order_status_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="delivery_details_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Payments_Details">
+    <End Role="Payments_Details" Type="Self.Payments_Details" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payments_Details">
+        <PropertyRef Name="payment_details_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="payment_details_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_Details_Discounts">
+    <End Role="Discounts" Type="Self.Discounts" Multiplicity="1" />
+    <End Role="Payments_Details" Type="Self.Payments_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discounts">
+        <PropertyRef Name="discount_id" />
+      </Principal>
+      <Dependent Role="Payments_Details">
+        <PropertyRef Name="discount_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище CoolPCModelContainer">
+    <EntitySet Name="Components" EntityType="Self.Components" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Components_Types" EntityType="Self.Components_Types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configurations" EntityType="Self.Configurations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CPU_Coolings" EntityType="Self.CPU_Coolings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CPUs" EntityType="Self.CPUs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Deliveries_Details" EntityType="Self.Deliveries_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Discounts" EntityType="Self.Discounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GPUs" EntityType="Self.GPUs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HDDs" EntityType="Self.HDDs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Keyboards" EntityType="Self.Keyboards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Motherboards" EntityType="Self.Motherboards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mouses" EntityType="Self.Mouses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders_Status" EntityType="Self.Orders_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payments_Details" EntityType="Self.Payments_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Power_Supplies" EntityType="Self.Power_Supplies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RAMs" EntityType="Self.RAMs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SSDs" EntityType="Self.SSDs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Components_Of_Configuration" EntityType="Self.Components_Of_Configuration" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Components_Of_Configuration].[configuration_id] AS [configuration_id], 
+    [Components_Of_Configuration].[component_id] AS [component_id]
+    FROM [dbo].[Components_Of_Configuration] AS [Components_Of_Configuration]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Configuration_In_Orders" EntityType="Self.Configuration_In_Orders" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Configuration_In_Orders].[configuration_id] AS [configuration_id], 
+    [Configuration_In_Orders].[order_id] AS [order_id]
+    FROM [dbo].[Configuration_In_Orders] AS [Configuration_In_Orders]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Component_Components_Types" Association="Self.FK_Component_Components_Types">
+      <End Role="Components_Types" EntitySet="Components_Types" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_CPU_Coolings" Association="Self.FK_Component_CPU_Coolings">
+      <End Role="CPU_Coolings" EntitySet="CPU_Coolings" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_CPUs" Association="Self.FK_Component_CPUs">
+      <End Role="CPUs" EntitySet="CPUs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Discounts" Association="Self.FK_Component_Discounts">
+      <End Role="Discounts" EntitySet="Discounts" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_GPUs" Association="Self.FK_Component_GPUs">
+      <End Role="GPUs" EntitySet="GPUs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_HDDs" Association="Self.FK_Component_HDDs">
+      <End Role="HDDs" EntitySet="HDDs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Keyboards" Association="Self.FK_Component_Keyboards">
+      <End Role="Keyboards" EntitySet="Keyboards" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Motherboards" Association="Self.FK_Component_Motherboards">
+      <End Role="Motherboards" EntitySet="Motherboards" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Mouses" Association="Self.FK_Component_Mouses">
+      <End Role="Mouses" EntitySet="Mouses" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_Power_Supplies" Association="Self.FK_Component_Power_Supplies">
+      <End Role="Power_Supplies" EntitySet="Power_Supplies" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_RAMs" Association="Self.FK_Component_RAMs">
+      <End Role="RAMs" EntitySet="RAMs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_SSDs" Association="Self.FK_Component_SSDs">
+      <End Role="SSDs" EntitySet="SSDs" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Components_Of_Configuration_Component" Association="Self.FK_Components_Of_Configuration_Component">
+      <End Role="Components" EntitySet="Components" />
+      <End Role="Components_Of_Configuration" EntitySet="Components_Of_Configuration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Components_Of_Configuration_Configurations" Association="Self.FK_Components_Of_Configuration_Configurations">
+      <End Role="Configurations" EntitySet="Configurations" />
+      <End Role="Components_Of_Configuration" EntitySet="Components_Of_Configuration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuration_In_Orders_Configurations" Association="Self.FK_Configuration_In_Orders_Configurations">
+      <End Role="Configurations" EntitySet="Configurations" />
+      <End Role="Configuration_In_Orders" EntitySet="Configuration_In_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuration_In_Orders_Orders" Association="Self.FK_Configuration_In_Orders_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Configuration_In_Orders" EntitySet="Configuration_In_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Deliveries_Details" Association="Self.FK_Orders_Deliveries_Details">
+      <End Role="Deliveries_Details" EntitySet="Deliveries_Details" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Orders_Status" Association="Self.FK_Orders_Orders_Status">
+      <End Role="Orders_Status" EntitySet="Orders_Status" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Payments_Details" Association="Self.FK_Orders_Payments_Details">
+      <End Role="Payments_Details" EntitySet="Payments_Details" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_Details_Discounts" Association="Self.FK_Payments_Details_Discounts">
+      <End Role="Discounts" EntitySet="Discounts" />
+      <End Role="Payments_Details" EntitySet="Payments_Details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

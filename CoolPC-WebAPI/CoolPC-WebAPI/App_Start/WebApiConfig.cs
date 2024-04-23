@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Net.Http.Formatting;
 
 namespace CoolPC_WebAPI
 {
@@ -10,7 +11,8 @@ namespace CoolPC_WebAPI
         public static void Register(HttpConfiguration config)
         {
             // Конфигурация и службы веб-API
-
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
             // Маршруты веб-API
             config.MapHttpAttributeRoutes();
 

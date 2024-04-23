@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3855473c22c40c1a79748ffd49a4830" Name="Diagram1">
+        <EntityTypeShape EntityType="CoolPCModel.Components" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Components_Types" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Configurations" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.CPU_Coolings" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.CPUs" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Customers" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Deliveries_Details" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Discounts" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.GPUs" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.HDDs" Width="1.5" PointX="0.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Keyboards" Width="1.5" PointX="0.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Motherboards" Width="1.5" PointX="0.75" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Mouses" Width="1.5" PointX="0.75" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Orders" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Orders_Status" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Payments_Details" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Power_Supplies" Width="1.5" PointX="0.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.RAMs" Width="1.5" PointX="0.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.SSDs" Width="1.5" PointX="0.75" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoolPCModel.Configuration_In_Orders" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_Components_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_CPU_Coolings" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_CPUs" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_Discounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_GPUs" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_HDDs" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_Keyboards" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_Motherboards" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_Mouses" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_Power_Supplies" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_RAMs" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Component_SSDs" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Configuration_In_Orders_Configurations" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Orders_Deliveries_Details" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Payments_Details_Discounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Configuration_In_Orders_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Orders_Orders_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.FK_Orders_Payments_Details" ManuallyRouted="false" />
+        <AssociationConnector Association="CoolPCModel.Components_Of_Configuration" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
