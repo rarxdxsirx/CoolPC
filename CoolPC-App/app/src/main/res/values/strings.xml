@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CoolPC</string>
+    <string name="searchbar_text">Поиск</string>
+    <string name="catalog">Каталог</string>
+    <string name="discounts">Акции</string>
+    <string name="orders">Заказы</string>
+    <string name="cart">Корзина</string>
 </resources>

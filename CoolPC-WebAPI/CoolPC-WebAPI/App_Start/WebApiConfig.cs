@@ -11,8 +11,8 @@ namespace CoolPC_WebAPI
         public static void Register(HttpConfiguration config)
         {
             // Конфигурация и службы веб-API
-            config.Formatters.Clear();
-            config.Formatters.Add(new JsonMediaTypeFormatter());
+            //config.Formatters.Clear();
+          
             // Маршруты веб-API
             config.MapHttpAttributeRoutes();
 
@@ -21,6 +21,11 @@ namespace CoolPC_WebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.Add(new JsonMediaTypeFormatter());
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);     
         }
     }
 }
