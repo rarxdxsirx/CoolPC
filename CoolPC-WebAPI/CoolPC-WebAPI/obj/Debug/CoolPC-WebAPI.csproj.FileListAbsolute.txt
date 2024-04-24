@@ -199,3 +199,6 @@ C:\UserProfiles\pr111aksenov\CoolPC\CoolPC-WebAPI\CoolPC-WebAPI\obj\Debug\CoolPC
 C:\UserProfiles\pr111aksenov\CoolPC\CoolPC-WebAPI\CoolPC-WebAPI\obj\Debug\CoolPC-WebAPI.dll
 C:\UserProfiles\pr111aksenov\CoolPC\CoolPC-WebAPI\CoolPC-WebAPI\obj\Debug\CoolPC-WebAPI.pdb
 C:\UserProfiles\pr111aksenov\CoolPC\CoolPC-WebAPI\CoolPC-WebAPI\bin\ru\EntityFramework.SqlServer.resources.dll
+D:\pr111kovaleva\CoolPC\CoolPC-WebAPI\CoolPC-WebAPI\bin\AutoMapper.dll
+D:\pr111kovaleva\CoolPC\CoolPC-WebAPI\CoolPC-WebAPI\bin\AutoMapper.xml
+D:\pr111kovaleva\CoolPC\CoolPC-WebAPI\CoolPC-WebAPI\bin\ru\EntityFramework.SqlServer.resources.dll

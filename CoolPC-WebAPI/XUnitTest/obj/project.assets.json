@@ -3581,23 +3581,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\UserProfiles\\pr111aksenov\\.nuget\\packages\\": {},
+    "C:\\UserProfiles\\pr111kovaleva\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\UserProfiles\\pr111aksenov\\CoolPC\\CoolPC-WebAPI\\XUnitTest\\XUnitTest.csproj",
+      "projectUniqueName": "D:\\pr111kovaleva\\CoolPC\\CoolPC-WebAPI\\XUnitTest\\XUnitTest.csproj",
       "projectName": "XUnitTest",
-      "projectPath": "C:\\UserProfiles\\pr111aksenov\\CoolPC\\CoolPC-WebAPI\\XUnitTest\\XUnitTest.csproj",
-      "packagesPath": "C:\\UserProfiles\\pr111aksenov\\.nuget\\packages\\",
-      "outputPath": "C:\\UserProfiles\\pr111aksenov\\CoolPC\\CoolPC-WebAPI\\XUnitTest\\obj\\",
+      "projectPath": "D:\\pr111kovaleva\\CoolPC\\CoolPC-WebAPI\\XUnitTest\\XUnitTest.csproj",
+      "packagesPath": "C:\\UserProfiles\\pr111kovaleva\\.nuget\\packages\\",
+      "outputPath": "D:\\pr111kovaleva\\CoolPC\\CoolPC-WebAPI\\XUnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\UserProfiles\\pr111aksenov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\UserProfiles\\pr111kovaleva\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -3611,8 +3611,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\UserProfiles\\pr111aksenov\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\CoolPC-WebAPI.csproj": {
-              "projectPath": "C:\\UserProfiles\\pr111aksenov\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\CoolPC-WebAPI.csproj"
+            "D:\\pr111kovaleva\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\CoolPC-WebAPI.csproj": {
+              "projectPath": "D:\\pr111kovaleva\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\CoolPC-WebAPI.csproj"
             }
           }
         }

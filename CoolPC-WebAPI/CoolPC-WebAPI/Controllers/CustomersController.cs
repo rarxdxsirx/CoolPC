@@ -8,18 +8,23 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using AutoMapper;
 using CoolPC_WebAPI;
+using CoolPC_WebAPI.Dto;
 
 namespace CoolPC_WebAPI.Controllers
 {
     public class CustomersController : ApiController
     {
         private CoolPCEntities db = new CoolPCEntities();
+        private readonly MapperConfiguration mapperConfiguration = new MapperConfiguration(cfg => cfg.CreateMap<Customers, CustomersDto>());
+        
 
         // GET: api/Customers
-        public IQueryable<Customers> GetCustomers()
+        public IQueryable<CustomersDto> GetCustomers()
         {
-            return db.Customers;
+            Mapper mapper = new Mapper(mapperConfiguration);            
+            return mapper.Map<IQueryable<CustomersDto>>(db.Customers); // DONT WORK????d?SA/D/AS FHSUDHFUHSDUFHHAAHSKAS
         }
 
         // GET: api/Customers/5
