@@ -8,7 +8,7 @@
     android:background="@color/background_color"
     >
 
-    <TextView android:id="@+id/app_name_textView"
+    <com.example.coolpc.GradientTextView android:id="@+id/app_name_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="COOLPC"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/Disket_Mono_Regular"
+        android:fontFamily="@font/disket_mono_regular"
         android:textSize="60sp"
         android:textColor="@color/white"
         />

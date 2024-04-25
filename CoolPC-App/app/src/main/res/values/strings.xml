@@ -5,4 +5,15 @@
     <string name="discounts">Акции</string>
     <string name="orders">Заказы</string>
     <string name="cart">Корзина</string>
+    <string name="home">Главная</string>
+    <string name="account">Профиль</string>
+
+    <string name="registration">Регистрация</string>
+    <string name="email">E-mail *</string>
+    <string name="login">Логин *</string>
+    <string name="password">Пароль</string>
+    <string name="phone_number">Номер телефона *</string>
+    <string name="first_name">Имя *</string>
+    <string name="second_name">Фамилия *</string>
+
 </resources>
