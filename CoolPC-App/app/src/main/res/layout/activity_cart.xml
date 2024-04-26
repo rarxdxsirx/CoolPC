@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CatalogActivity"
+    tools:context=".CartActivity"
     android:id="@+id/main_container"
     >
 
@@ -26,7 +26,7 @@
         <TextView android:id="@+id/navigation_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Главная / Каталог"
+            android:text="Главная / Корзина"
 
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="|- Конфигурации"
+            android:text="|- Корзина"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="5dp"
@@ -44,52 +44,67 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_gravity="center"
             >
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:orientation="horizontal"
+                android:gravity="end"
                 >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/icon_popularity"
-                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="По популярности"
+                    android:text="Выбрать всё"
+                    android:textSize="16sp"
                     />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:orientation="horizontal"
-                >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/icon_filter"
-                    />
-                <TextView
+                <RadioButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Фильтры"
-                    />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/cart_items_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/navbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Итого:"
+            android:textSize="18sp"
+            />
+        <TextView android:id="@+id/total_cost_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15978$"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Оформить заказ"
+            app:cornerRadius="@dimen/button_corner_radius"
+            android:textSize="@dimen/button_text_size"
+            android:backgroundTint="@color/main_blue_color"
+            android:paddingHorizontal="50dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="15dp"
+            />
     </LinearLayout>
 
 
