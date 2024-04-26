@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CoolPC_WebAPI;
+using CoolPC_WebAPI.Dto;
 
 namespace CoolPC_WebAPI.Controllers
 {
@@ -17,9 +19,9 @@ namespace CoolPC_WebAPI.Controllers
         private CoolPCEntities db = new CoolPCEntities();
 
         // GET: api/HDDs
-        public IQueryable<HDDs> GetHDDs()
+        public IHttpActionResult GetHDDs()
         {
-            return db.HDDs;
+            return Ok(db.HDDs.ToList().ConvertAll(a => new HDDsDto(a)));
         }
 
         // GET: api/HDDs/5
@@ -32,7 +34,7 @@ namespace CoolPC_WebAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(hDDs);
+            return Ok(new HDDsDto(hDDs));
         }
 
         // PUT: api/HDDs/5

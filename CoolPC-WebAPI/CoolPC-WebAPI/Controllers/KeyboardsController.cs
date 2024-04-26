@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CoolPC_WebAPI;
+using CoolPC_WebAPI.Dto;
 
 namespace CoolPC_WebAPI.Controllers
 {
@@ -17,9 +18,9 @@ namespace CoolPC_WebAPI.Controllers
         private CoolPCEntities db = new CoolPCEntities();
 
         // GET: api/Keyboards
-        public IQueryable<Keyboards> GetKeyboards()
+        public IHttpActionResult GetKeyboards()
         {
-            return db.Keyboards;
+            return Ok(db.Keyboards.ToList().ConvertAll(a => new KeyboardsDto(a)));
         }
 
         // GET: api/Keyboards/5
@@ -32,7 +33,7 @@ namespace CoolPC_WebAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(keyboards);
+            return Ok(new KeyboardsDto(keyboards));
         }
 
         // PUT: api/Keyboards/5

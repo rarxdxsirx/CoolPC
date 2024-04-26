@@ -22,7 +22,8 @@ namespace CoolPC_WebAPI
     
         public long configuration_id { get; set; }
         public string custom { get; set; }
-    
+        public string name { get; set; }
+
         public virtual Configuration_In_Orders Configuration_In_Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Components> Components { get; set; }

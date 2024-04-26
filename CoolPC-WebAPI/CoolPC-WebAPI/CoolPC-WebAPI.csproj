@@ -229,7 +229,26 @@
     <Compile Include="Discounts.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Dto\ComponentsDto.cs" />
+    <Compile Include="Dto\Components_TypesDto.cs" />
+    <Compile Include="Dto\ConfigurationsDto.cs" />
+    <Compile Include="Dto\Configuration_In_OrdersDto.cs" />
+    <Compile Include="Dto\CPUsDto.cs" />
+    <Compile Include="Dto\CPU_CoolingsDto.cs" />
     <Compile Include="Dto\CustomersDto.cs" />
+    <Compile Include="Dto\DeliveriesDetailsDto.cs" />
+    <Compile Include="Dto\DiscountsDto.cs" />
+    <Compile Include="Dto\GPUsDto.cs" />
+    <Compile Include="Dto\HDDsDto.cs" />
+    <Compile Include="Dto\KeyboardsDto.cs" />
+    <Compile Include="Dto\MotherboardsDto.cs" />
+    <Compile Include="Dto\MousesDto.cs" />
+    <Compile Include="Dto\OrdersDto.cs" />
+    <Compile Include="Dto\Orders_StatusDto.cs" />
+    <Compile Include="Dto\Payments_DetailsDto.cs" />
+    <Compile Include="Dto\Power_SuppliesDto.cs" />
+    <Compile Include="Dto\RAMsDto.cs" />
+    <Compile Include="Dto\SSDsDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

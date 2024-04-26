@@ -17,14 +17,13 @@ namespace CoolPC_WebAPI.Controllers
     public class CustomersController : ApiController
     {
         private CoolPCEntities db = new CoolPCEntities();
-        private readonly MapperConfiguration mapperConfiguration = new MapperConfiguration(cfg => cfg.CreateMap<Customers, CustomersDto>());
-        
+
+        //todo: add password hashing
 
         // GET: api/Customers
-        public IQueryable<CustomersDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            Mapper mapper = new Mapper(mapperConfiguration);            
-            return mapper.Map<IQueryable<CustomersDto>>(db.Customers); // DONT WORK????d?SA/D/AS FHSUDHFUHSDUFHHAAHSKAS
+            return Ok(db.Customers.ToList().ConvertAll(e => new CustomersDto(e)));
         }
 
         // GET: api/Customers/5
@@ -37,7 +36,19 @@ namespace CoolPC_WebAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(customers);
+            return Ok(new CustomersDto(customers));
+        }
+
+        [ResponseType(typeof(Customers))]
+        public IHttpActionResult GetCustomers(string login)
+        {
+            Customers customers = db.Customers.ToList().First(e => e.login == login);
+            if (customers == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new CustomersDto(customers));
         }
 
         // PUT: api/Customers/5
@@ -79,6 +90,7 @@ namespace CoolPC_WebAPI.Controllers
         [ResponseType(typeof(Customers))]
         public IHttpActionResult PostCustomers(Customers customers)
         {
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

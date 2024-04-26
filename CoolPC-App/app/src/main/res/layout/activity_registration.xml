@@ -7,30 +7,28 @@
     tools:context=".RegistrationActivity"
     android:id="@+id/main_container"
     >
-    <include layout="@layout/navbar"
+
+    <include layout="@layout/header" android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/main_container"
-        app:layout_constraintLeft_toLeftOf="@id/main_container"
-        />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
         app:layout_constraintTop_toTopOf="@+id/main_container"
         app:layout_constraintLeft_toLeftOf="@id/main_container"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintLeft_toLeftOf="@id/header"
         >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="@id/main_container"
-        app:layout_constraintLeft_toLeftOf="@id/main_container"
+        android:layout_gravity="center"
         >
-        <include layout="@layout/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
-            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +49,7 @@
             <EditText android:id="@+id/login_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="none"
+                android:background="@android:color/transparent"
                 android:hint="@string/login"
                 android:layout_margin="15dp"
                 />
@@ -64,14 +62,16 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
             >
-            <EditText android:id="@+id/phone_editText"
+            <EditText android:id="@+id/email_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="none"
-                android:hint="@string/phone_number"
+                android:background="@android:color/transparent"
+                android:hint="@string/email"
                 android:layout_margin="15dp"
                 />
         </com.google.android.material.card.MaterialCardView>
+
+
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             <EditText android:id="@+id/first_name_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="none"
+                android:background="@android:color/transparent"
                 android:hint="@string/first_name"
                 android:layout_margin="15dp"
                 />
@@ -99,7 +99,7 @@
             <EditText android:id="@+id/second_name_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="none"
+                android:background="@android:color/transparent"
                 android:hint="@string/second_name"
                 android:layout_margin="15dp"
                 />
@@ -112,14 +112,67 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
             >
-            <EditText android:id="@+id/email_editText"
+            <EditText android:id="@+id/phone_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="none"
-                android:hint="@string/email"
+                android:background="@android:color/transparent"
+                android:hint="@string/phone_number"
                 android:layout_margin="15dp"
                 />
         </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            >
+            <EditText android:id="@+id/password_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/password"
+                android:layout_margin="15dp"
+                android:inputType="textPassword"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            >
+            <EditText android:id="@+id/password_confirm_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/password_confirm"
+                android:layout_margin="15dp"
+                android:inputType="textPassword"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/registrate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registration_confirm"
+            android:backgroundTint="@color/main_blue_color"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            app:cornerRadius="@dimen/button_corner_radius"
+            android:textSize="@dimen/button_text_size"
+            />
+        
+        <TextView android:id="@+id/already_have_acc_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/already_have_an_acc"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            />
 
     </LinearLayout>
     </ScrollView>

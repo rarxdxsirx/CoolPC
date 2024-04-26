@@ -1,0 +1,82 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "A:\\Docs\\.3 \u043A\u0443\u0440\u0441\\\u0423\u041F.02.01\\CoolPC\\CoolPC-WebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F414A56A-A06C-4234-A162-3C43CF9E3E23}|CoolPC-WebAPI\\CoolPC-WebAPI.csproj|a:\\docs\\.3 \u043A\u0443\u0440\u0441\\\u0443\u043F.02.01\\coolpc\\coolpc-webapi\\coolpc-webapi\\controllers\\ssdscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F414A56A-A06C-4234-A162-3C43CF9E3E23}|CoolPC-WebAPI\\CoolPC-WebAPI.csproj|solutionrelative:coolpc-webapi\\controllers\\ssdscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F414A56A-A06C-4234-A162-3C43CF9E3E23}|CoolPC-WebAPI\\CoolPC-WebAPI.csproj|a:\\docs\\.3 \u043A\u0443\u0440\u0441\\\u0443\u043F.02.01\\coolpc\\coolpc-webapi\\coolpc-webapi\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F414A56A-A06C-4234-A162-3C43CF9E3E23}|CoolPC-WebAPI\\CoolPC-WebAPI.csproj|solutionrelative:coolpc-webapi\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F414A56A-A06C-4234-A162-3C43CF9E3E23}|CoolPC-WebAPI\\CoolPC-WebAPI.csproj|A:\\Docs\\.3 \u043A\u0443\u0440\u0441\\\u0423\u041F.02.01\\CoolPC\\CoolPC-WebAPI\\coolpc-webapi\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F414A56A-A06C-4234-A162-3C43CF9E3E23}|CoolPC-WebAPI\\CoolPC-WebAPI.csproj|solutionrelative:coolpc-webapi\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SSDsController.cs",
+              "DocumentMoniker": "A:\\Docs\\.3 \u043A\u0443\u0440\u0441\\\u0423\u041F.02.01\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\Controllers\\SSDsController.cs",
+              "RelativeDocumentMoniker": "CoolPC-WebAPI\\Controllers\\SSDsController.cs",
+              "ToolTip": "A:\\Docs\\.3 \u043A\u0443\u0440\u0441\\\u0423\u041F.02.01\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\Controllers\\SSDsController.cs",
+              "RelativeToolTip": "CoolPC-WebAPI\\Controllers\\SSDsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T04:49:11.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomersController.cs",
+              "DocumentMoniker": "A:\\Docs\\.3 \u043A\u0443\u0440\u0441\\\u0423\u041F.02.01\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\Controllers\\CustomersController.cs",
+              "RelativeDocumentMoniker": "CoolPC-WebAPI\\Controllers\\CustomersController.cs",
+              "ToolTip": "A:\\Docs\\.3 \u043A\u0443\u0440\u0441\\\u0423\u041F.02.01\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\Controllers\\CustomersController.cs",
+              "RelativeToolTip": "CoolPC-WebAPI\\Controllers\\CustomersController.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAcwCoAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T04:02:39.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Customers.cs",
+              "DocumentMoniker": "A:\\Docs\\.3 \u043A\u0443\u0440\u0441\\\u0423\u041F.02.01\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\Customers.cs",
+              "RelativeDocumentMoniker": "CoolPC-WebAPI\\Customers.cs",
+              "ToolTip": "A:\\Docs\\.3 \u043A\u0443\u0440\u0441\\\u0423\u041F.02.01\\CoolPC\\CoolPC-WebAPI\\CoolPC-WebAPI\\Customers.cs",
+              "RelativeToolTip": "CoolPC-WebAPI\\Customers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T03:56:10.983Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

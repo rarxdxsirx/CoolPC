@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="navbar_icons_margin">17dp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="button_corner_radius">8dp</dimen>
 </resources>

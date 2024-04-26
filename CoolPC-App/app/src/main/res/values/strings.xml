@@ -9,11 +9,18 @@
     <string name="account">Профиль</string>
 
     <string name="registration">Регистрация</string>
+    <string name="registration_confirm">Зарегистрироваться</string>
     <string name="email">E-mail *</string>
     <string name="login">Логин *</string>
-    <string name="password">Пароль</string>
+    <string name="password">Пароль *</string>
     <string name="phone_number">Номер телефона *</string>
     <string name="first_name">Имя *</string>
     <string name="second_name">Фамилия *</string>
+    <string name="password_confirm">Подтверждение пароля *</string>
+    <string name="already_have_an_acc">Уже зарегистрированы? Войти</string>
 
+
+    <string name="Auth">Вход</string>
+    <string name="log_in">Войти</string>
+    <string name="doesnt_have_an_acc">Нет аккаунта? Зарегистрироваться</string>
 </resources>

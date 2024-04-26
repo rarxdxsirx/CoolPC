@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CoolPC_WebAPI;
+using CoolPC_WebAPI.Dto;
 
 namespace CoolPC_WebAPI.Controllers
 {
@@ -17,9 +18,9 @@ namespace CoolPC_WebAPI.Controllers
         private CoolPCEntities db = new CoolPCEntities();
 
         // GET: api/CPUs
-        public IQueryable<CPUs> GetCPUs()
+        public IHttpActionResult GetCPUs()
         {
-            return db.CPUs;
+            return Ok(db.CPUs.ToList().ConvertAll(a => new CPUsDto(a)));
         }
 
         // GET: api/CPUs/5
@@ -32,7 +33,7 @@ namespace CoolPC_WebAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(cPUs);
+            return Ok(new CPUsDto(cPUs));
         }
 
         // PUT: api/CPUs/5

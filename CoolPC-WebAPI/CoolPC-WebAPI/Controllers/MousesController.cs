@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CoolPC_WebAPI;
+using CoolPC_WebAPI.Dto;
 
 namespace CoolPC_WebAPI.Controllers
 {
@@ -17,9 +19,9 @@ namespace CoolPC_WebAPI.Controllers
         private CoolPCEntities db = new CoolPCEntities();
 
         // GET: api/Mouses
-        public IQueryable<Mouses> GetMouses()
+        public IHttpActionResult GetMouses()
         {
-            return db.Mouses;
+            return Ok(db.Mouses.ToList().ConvertAll(a=> new MousesDto(a)));
         }
 
         // GET: api/Mouses/5
@@ -32,7 +34,7 @@ namespace CoolPC_WebAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(mouses);
+            return Ok(new MousesDto(mouses));
         }
 
         // PUT: api/Mouses/5
