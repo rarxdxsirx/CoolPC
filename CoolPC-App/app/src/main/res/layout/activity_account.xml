@@ -64,7 +64,7 @@
                 android:textSize="16sp"
                 android:layout_marginTop="20dp"
                 />
-            <TextView
+            <TextView android:id="@+id/account_settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Настройки"

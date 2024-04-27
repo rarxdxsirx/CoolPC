@@ -1,23 +1,18 @@
 package com.example.coolpc;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,21 +54,50 @@ public class RegistrationActivity extends AppCompatActivity {
         registrateButton.setOnClickListener(v -> {
             NetworkService networkService = NetworkService.getInstance();
             CoolPCApi api = networkService.getJSONApi();
-            //todo: add password confirm check
+            boolean isFormValid = true;
+            String errorMessage = "";
             Customer customer = new Customer();
             customer.setFirstName(firstNameEditText.getText().toString());
+            if (customer.getFirstName().length() <= 0 || customer.getFirstName().toString().matches(".*\\d.*")) {
+                isFormValid = false;
+                errorMessage += "Введено неверное имя пользователя";
+            }
             customer.setSecondName(secondNameEditText.getText().toString());
+            if (customer.getSecondName().length() <= 0 || customer.getSecondName().toString().matches(".*\\d.*")) {
+                isFormValid = false;
+                errorMessage += "Введена неверная фамилия пользователя\n";
+            }
             customer.setLogin(loginEditText.getText().toString());
             customer.setEmail(emailEditText.getText().toString());
+            if (!isValidEmail(customer.getEmail())) {
+                isFormValid = false;
+                errorMessage += "Введеная неверная почта пользователя\n";
+            }
             customer.setPassword(passwordEditText.getText().toString());
-            customer.setCustomerId(7);
-            Call<Customer> call = api.postData(customer);
+            if (!isValidPassword(customer.getPassword())) {
+                isFormValid = false;
+                errorMessage += "Пароль должен быть сложнее!\n";
+            }
+            if (!passwordConfirmEditText.getText().toString().equals(customer.getPassword())) {
+                isFormValid = false;
+                errorMessage += "Пароли не совпадают";
+            }
+            customer.setCustomerId(7); // get last customer id from api
+            if (!isFormValid) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setTitle("Ошибка при регистрации!");
+                builder.setMessage(errorMessage);
+                builder.setCancelable(false);
+                return;
+            }
+
+            Call<Customer> call = api.postCustomer(customer);
             call.enqueue(new Callback<Customer>() {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(getApplicationContext(),"Пользователь зарегистрирован", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -81,10 +105,28 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Customer> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(),"Пользователь не зарегистрирован " + t.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    emailEditText.setText(t.getMessage());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                    builder.setTitle("Произошла ошибка при попытке связаться с сервером!");
+                    builder.setMessage(t.getMessage());
+                    builder.setCancelable(false);
+                    return;
                 }
             });
         });
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+
+    public static boolean isValidPassword(CharSequence password) {
+        if (password.length() < 8)
+            return false;
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$"; // (?=.*[A-Z])
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+        return matcher.matches();
     }
 }
